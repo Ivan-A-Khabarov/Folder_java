@@ -1,5 +1,12 @@
 package Java_OOP.DZ1;
 
+/*Создать наследника реализованного класса ГорячийНапиток с дополнительным полем int температура.
+Создать класс ГорячихНапитковАвтомат реализующий интерфейс ТорговыйАвтомат и реализовать
+перегруженный метод getProduct(int name, int volume, int temperature), выдающий продукт соответствующий имени,
+объёму и температуре
+В main проинициализировать несколько ГорячихНапитков и ГорячихНапитковАвтомат и воспроизвести логику, заложенную в программе
+Всё вышеуказанное создать согласно принципам ООП, пройденным на семинаре*/
+
 class HotBeverage {
     private int temperature;
 
@@ -66,7 +73,7 @@ public class Main {
             System.out.println("Продукт 1: Название=" + hotProduct1.getName() + ", Объем=" + hotProduct1.getVolume() + ", Температура=" + hotProduct1.getTemperature());
         }
 
-        // Проверка, является ли продукт экземпляром класса горячего напитка
+
         if (product2 instanceof HotBeverageProduct) {
             HotBeverageProduct hotProduct2 = (HotBeverageProduct) product2;
             System.out.println("Продукт 2: Название=" + hotProduct2.getName() + ", Объем=" + hotProduct2.getVolume() + ", Температура=" + hotProduct2.getTemperature());
