@@ -29,13 +29,13 @@ public class Program {
         // #endregion
 
         // #region MultiParameterized
-        // MultiParameterized<Integer, Double, String> mp1 = new MultiParameterized<>(
-        //         1, 2.0, "3.0");
-        // System.out.println(mp1);
+         MultiParameterized<Integer, Double, String> mp1 = new MultiParameterized<>(
+                 1, 2.0, "3.0");
+         System.out.println(mp1);
 
-        // MultiParameterized<String, String, String> mp2 = new MultiParameterized<>(
-        //         "1", "2.0", "3.0");
-        // System.out.println(mp2);
+         MultiParameterized<String, String, String> mp2 = new MultiParameterized<>(
+                 "1", "2.0", "3.0");
+         System.out.println(mp2);
 
         // #endregion
 
