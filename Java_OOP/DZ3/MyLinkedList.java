@@ -2,7 +2,7 @@ package DZ3;
 
 import java.util.Iterator;
 
-class MyLinkedList<T> implements Iterable<T> {
+public class MyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
 
     public void add(T data) {
@@ -86,7 +86,7 @@ class MyLinkedListTest {
         list.add(3);
         list.add(4);
 
-
+        System.out.println("MyLinkedList ");
         for (Integer i : list) {
             System.out.println(i);
         }
