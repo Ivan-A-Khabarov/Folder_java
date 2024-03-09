@@ -2,6 +2,8 @@ package DZ4;
 
 import java.util.Arrays;
 
+
+
 public class DataContainer<T> {
     private static final int INITIAL_CAPACITY = 10;
     private T[] data;
