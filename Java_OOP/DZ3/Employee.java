@@ -3,6 +3,10 @@ package DZ3;
 import java.util.Comparator;
 import java.util.Arrays;
 
+// Создайте класс Employee с полями name, age и salary.
+// Реализуйте интерфейс Comparable<Employee> для сравнения сотрудников по их возрасту.
+// Создайте компаратор EmployeeSalaryComparator, который будет сравнивать сотрудников по их зарплате.
+// Напишите тестовый класс для проверки сортировки массива сотрудников с использованием как Comparable, так и Comparator.
 
 public class Employee implements Comparable<Employee> {
     private String name;

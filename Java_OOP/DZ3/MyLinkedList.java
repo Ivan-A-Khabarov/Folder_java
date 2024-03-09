@@ -9,11 +9,6 @@ import java.util.Iterator;
 //Напишите методы добавления, удаления и получения элементов из списка в классе MyLinkedList.
 //Создайте тестовый класс для проверки функциональности MyLinkedList, включая использование цикла for-each для перебора элементов списка.
 //Компаратор и компарируемость (Comparator и Comparable):
-//
-//Создайте класс Employee с полями name, age и salary.
-//Реализуйте интерфейс Comparable<Employee> для сравнения сотрудников по их возрасту.
-//Создайте компаратор EmployeeSalaryComparator, который будет сравнивать сотрудников по их зарплате.
-//Напишите тестовый класс для проверки сортировки массива сотрудников с использованием как Comparable, так и Comparator.
 
 public class MyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
