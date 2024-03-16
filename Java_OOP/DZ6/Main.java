@@ -48,37 +48,27 @@ class DynamicArray<T> implements DataArray<T> {
 // Используем интерфейс в классе DataContainer
 public class DataContainer<T> {
     private static final int INITIAL_CAPACITY = 10;
-    private DataArray<T> data;
+    private final DynamicArray<T> dynamicArray;
     private int size;
 
-    public DataContainer(DataArray<T> dataArray) {
-        this.data = dataArray;
+    public DataContainer() {
+        this.dynamicArray = new DynamicArray<>(INITIAL_CAPACITY);
         this.size = 0;
     }
 
-    public DataContainer() {
-        this(new DynamicArray<>(INITIAL_CAPACITY));
-    }
-
     public void add(T item) {
-        if (size >= data.length()) {
-            data.ensureCapacity();
+        if (size >= dynamicArray.length()) {
+            dynamicArray.ensureCapacity();
         }
-        data.set(size++, item);
+        dynamicArray.set(size++, item);
     }
 
     public T get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        return data.get(index);
+        return dynamicArray.get(index);
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        data.remove(index);
+        dynamicArray.remove(index);
         size--;
     }
 
