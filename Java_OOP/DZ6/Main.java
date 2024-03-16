@@ -1,92 +1,57 @@
 package DZ6;
 
-import java.util.Arrays;
+// Взять реализованный код в рамках семинара 4 и продемонстрировать применение принципов, усвоенных на семинаре.
+//Нужно в проекте прокомментировать участки кода, которые рефакторим, какой принцип применяем и почему.
 
-// Создаем интерфейс для массива данных
-interface DataArray<T> {
-    int length();
-    T get(int index);
-    void set(int index, T element);
-    void remove(int index);
-    void ensureCapacity();
+interface Pair<T, U> {
+    T getFirst();
+    U getSecond();
+    void setFirst(T first);
+    void setSecond(U second);
 }
 
-// Реализуем интерфейс с помощью класса массива
-class DynamicArray<T> implements DataArray<T> {
-    private static final int GROWTH_FACTOR = 2;
-    private Object[] array;
-    private int size;
+// Создаем класс, который реализует интерфейс Pair, обеспечивая конкретную реализацию.
+class GenericPair<T, U> implements Pair<T, U> {
+    private T first;
+    private U second;
 
-    public DynamicArray(int initialCapacity) {
-        this.array = new Object[initialCapacity];
-        this.size = 0;
+    // Конструктор класса
+    public GenericPair(T first, U second) {
+        this.first = first;
+        this.second = second;
     }
 
-    public int length() {
-        return array.length;
+    // Методы, реализующие методы интерфейса Pair
+    public T getFirst() {
+        return first;
     }
 
-    public T get(int index) {
-        return (T) array[index];
+    public U getSecond() {
+        return second;
     }
 
-    public void set(int index, T element) {
-        array[index] = element;
+    public void setFirst(T first) {
+        this.first = first;
     }
 
-    public void remove(int index) {
-        System.arraycopy(array, index + 1, array, index, size - index - 1);
-        size--;
-    }
-
-    public void ensureCapacity() {
-        int newCapacity = array.length * GROWTH_FACTOR;
-        array = Arrays.copyOf(array, newCapacity);
+    public void setSecond(U second) {
+        this.second = second;
     }
 }
 
-// Используем интерфейс в классе DataContainer
-public class DataContainer<T> {
-    private static final int INITIAL_CAPACITY = 10;
-    private final DynamicArray<T> dynamicArray;
-    private int size;
-
-    public DataContainer() {
-        this.dynamicArray = new DynamicArray<>(INITIAL_CAPACITY);
-        this.size = 0;
-    }
-
-    public void add(T item) {
-        if (size >= dynamicArray.length()) {
-            dynamicArray.ensureCapacity();
-        }
-        dynamicArray.set(size++, item);
-    }
-
-    public T get(int index) {
-        return dynamicArray.get(index);
-    }
-
-    public void remove(int index) {
-        dynamicArray.remove(index);
-        size--;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
+public class Main {
     public static void main(String[] args) {
-        DataContainer<String> stringContainer = new DataContainer<>();
+        // Создаем объект класса GenericPair, который реализует интерфейс Pair
+        Pair<Integer, String> pair = new GenericPair<>(10, "Hello");
+        // Выводим первый и второй элементы пары
+        System.out.println("First element: " + pair.getFirst());
+        System.out.println("Second element: " + pair.getSecond());
 
-        stringContainer.add("Apple");
-        stringContainer.add("Banana");
-        stringContainer.add("Orange");
-
-        String fruit = stringContainer.get(1);
-        System.out.println("Fruit at index 1: " + fruit);
-        stringContainer.remove(1);
-
-        System.out.println("Size of container: " + stringContainer.getSize());
+        // Изменяем значения первого и второго элементов пары
+        pair.setFirst(20);
+        pair.setSecond("World");
+        // Выводим обновленные значения первого и второго элементов пары
+        System.out.println("Updated first element: " + pair.getFirst());
+        System.out.println("Updated second element: " + pair.getSecond());
     }
 }
